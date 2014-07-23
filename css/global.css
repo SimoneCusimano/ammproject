@@ -1,7 +1,5 @@
 * { margin: 0 0 0 0; text-align: center; }
 
-
-
 #page {
     background-color: grey;
     width: 100%;
@@ -20,16 +18,10 @@
     float: left;
 }
 
-#sidebarRX {
-    background-color: yellow;
-    height: auto;
-    width: 15%;
-    float: left;
-}
 
 #content {
     background-color: red;
-    width: 70%;
+    width: 85%;
     height: 70%;
     float: left;
 }
