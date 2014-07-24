@@ -1,8 +1,9 @@
 <?php
 
+
 include_once 'controller/BaseController.php';
-include_once 'controller/AdminController.php';
-include_once 'controller/UserController.php';
+include_once 'controller/AmministratoreController.php';
+include_once 'controller/DipendenteController.php';
 
 date_default_timezone_set("Europe/Rome");
 
@@ -12,7 +13,6 @@ FrontController::dispatch($_REQUEST);
  * Classe che controlla il punto unico di accesso all'applicazione
  * @author Simone Cusimano
  */
-
 class FrontController {
 
     /**
@@ -22,7 +22,6 @@ class FrontController {
     public static function dispatch(&$request) {
         // inizializzo sessione 
         session_start();
-        
         if (isset($request["page"])) {
 
             switch ($request["page"]) {
@@ -33,19 +32,17 @@ class FrontController {
                     $controller->handleInput($request);
                     break;
 
-                case 'admin':
-                    $controller = new AdminController();
-                    if (isset($_SESSION[BaseController::role]) &&
-                        $_SESSION[BaseController::role] != User::Admin) {
+                case 'amministratore':
+                    $controller = new AmministratoreController();
+                    if (isset($_SESSION[BaseController::role]) && $_SESSION[BaseController::role] != User::Amministratore) {
                         self::write403();
                     }
                     $controller->handleInput($request);
                     break;
 
-                case 'user':
-                    $controller = new UserController();
-                    if (isset($_SESSION[BaseController::role]) &&
-                        $_SESSION[BaseController::role] != User::User)  {
+                case 'dipendente':
+                    $controller = new DipendenteController();
+                    if (isset($_SESSION[BaseController::role]) && $_SESSION[BaseController::role] != User::Dipendente) {
                         self::write403();
                     }
                     $controller->handleInput($request);
