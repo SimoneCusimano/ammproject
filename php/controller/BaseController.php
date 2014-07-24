@@ -102,7 +102,7 @@ class BaseController {
      * @param ViewDescriptor $vd il descrittore della vista
      */
     protected function showHomeAmministratore($vd) {
-        //$this->logout($vd);
+        $this->logout($vd);
         $categorie = CategoriaFactory::instance()->getListaCategorie();
         $vd->setTitolo("Amm Project - Amministratore ");
         $vd->setMenuCategorie($categorie);
