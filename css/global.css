@@ -7,7 +7,7 @@
 }
 
 #header {
-    background-color: blue;
+    background-color: white;
     height: 20%;
 }
 
@@ -17,7 +17,6 @@
     width: 15%;
     float: left;
 }
-
 
 #content {
     background-color: red;

@@ -3,6 +3,8 @@
 include_once basename(__DIR__) . '/../view/ViewDescriptor.php';
 include_once basename(__DIR__) . '/../model/User.php';
 include_once basename(__DIR__) . '/../model/UserFactory.php';
+include_once basename(__DIR__) . '/../model/Categoria.php';
+include_once basename(__DIR__) . '/../model/CategoriaFactory.php';
 
 class BaseController {
 
@@ -36,8 +38,9 @@ class BaseController {
                     $password = isset($request['password']) ? $request['password'] : '';
                     $this->login($vd, $username, $password);
                     // questa variabile viene poi utilizzata dalla vista
-                    if ($this->loggedIn())
+                    if ($this->loggedIn()) {
                         $user = UserFactory::instance()->cercaUtentePerId($_SESSION[self::user], $_SESSION[self::role]);
+                    }
                     break;
                 default : $this->showLoginPage();
             }
@@ -71,7 +74,6 @@ class BaseController {
      * @param ViewDescriptor $vd il descrittore della vista
      */
     protected function showLoginPage($vd) {
-        // mostro la pagina di login
         $vd->setTitolo("AMM Project - Login");
         $vd->setMenuFile(basename(__DIR__) . '/../view/login/menu.php');
         $vd->setLogoFile(basename(__DIR__) . '/../view/login/logo.php');
@@ -85,18 +87,13 @@ class BaseController {
      * @param ViewDescriptor $vd il descrittore della vista
      */
     protected function showHomeDipendente($vd) {
-        // mostro la home degli studenti
-        echo "HOME DIPENDENTE";
-        $this->logout($vd);
-        /*
-        $vd->setTitolo("esAMMi - gestione studente ");
-        $vd->setMenuFile(basename(__DIR__) . '/../view/studente/menu.php');
-        $vd->setLogoFile(basename(__DIR__) . '/../view/studente/logo.php');
-        $vd->setLeftBarFile(basename(__DIR__) . '/../view/studente/leftBar.php');
-        $vd->setRightBarFile(basename(__DIR__) . '/../view/studente/rightBar.php');
-        $vd->setContentFile(basename(__DIR__) . '/../view/studente/content.php');
-         * 
-         */
+        $categorie = CategoriaFactory::instance()->getListaCategorie();
+        $vd->setTitolo("Amm Project - Dipendente ");
+        $vd->setMenuCategorie($categorie);
+        $vd->setMenuFile(basename(__DIR__) . '/../view/dipendente/menu.php');
+        $vd->setLogoFile(basename(__DIR__) . '/../view/dipendente/logo.php');
+        $vd->setLeftBarFile(basename(__DIR__) . '/../view/dipendente/leftBar.php');
+        $vd->setContentFile(basename(__DIR__) . '/../view/dipendente/content.php');
     }
 
     /**
@@ -105,17 +102,14 @@ class BaseController {
      * @param ViewDescriptor $vd il descrittore della vista
      */
     protected function showHomeAmministratore($vd) {
-        // mostro la home degli amministratori
-        echo "HOME AMMINISTRATORE";
-        /*
-        $vd->setTitolo("esAMMi - Super User ");
+        //$this->logout($vd);
+        $categorie = CategoriaFactory::instance()->getListaCategorie();
+        $vd->setTitolo("Amm Project - Amministratore ");
+        $vd->setMenuCategorie($categorie);
         $vd->setMenuFile(basename(__DIR__) . '/../view/amministratore/menu.php');
         $vd->setLogoFile(basename(__DIR__) . '/../view/amministratore/logo.php');
         $vd->setLeftBarFile(basename(__DIR__) . '/../view/amministratore/leftBar.php');
-        $vd->setRightBarFile(basename(__DIR__) . '/../view/amministratore/rightBar.php');
         $vd->setContentFile(basename(__DIR__) . '/../view/amministratore/content.php');
-         * 
-         */
     }
 
     /**

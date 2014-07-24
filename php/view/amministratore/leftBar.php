@@ -1,4 +1,10 @@
-<h2 class="icon-title">Navigazione</h2>
+<h2>Navigazione</h2>
 <ul>
-    <li><a href="login">Home</a></li>
+    <?php
+    $categorie = $vd->getMenuCategorie();
+    //print_r($categorie);
+        foreach ($categorie as $categoria) {
+            echo "<li><a href=\"amministratore/".$categoria->getNome()."\">".$categoria->getNome()."</a></li>";
+        }
+    ?>
 </ul>
