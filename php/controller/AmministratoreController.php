@@ -2,7 +2,7 @@
 
 include_once 'BaseController.php';
 
-class AdminController extends BaseController {
+class AmministratoreController extends BaseController {
     
     
     public function __construct() {
