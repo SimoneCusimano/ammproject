@@ -39,7 +39,7 @@
                         <li>passowrd: amministratore</li>
                     </ul>
                 </li>
-                <li>Cliente
+                <li>Dipendente
                     <ul>
                         <li>username: dipendente</li>
                         <li>passowrd: dipendente</li>
