@@ -15,6 +15,15 @@ class ViewDescriptor {
     private $messaggioConferma;
     private $pagina;
     private $sottoPagina;
+    private $prodotti;
+    
+    public function setProdotti($prodotti) {
+        $this->prodotti = $prodotti;
+    }
+    
+    public function getProdotti() {
+        return $this->prodotti;
+    }
     
     public function getTitolo() {
         return $this->titolo;

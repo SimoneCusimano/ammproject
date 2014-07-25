@@ -21,32 +21,6 @@ class AmministratoreController extends BaseController {
             $user = UserFactory::instance()->cercaUtentePerId(
                     $_SESSION[BaseController::user], $_SESSION[BaseController::role]);
 
-            if (isset($request["subpage"])) {
-                switch ($request["subpage"]) {
-                    case 'registro':
-                        $vd->setSottoPagina('registro');
-                        break;
-                    case 'Abbigliamento':
-                        $vd->setSottoPagina('Abbigliamento');
-                        break;
-                    case 'scarpe':
-                        $vd->setSottoPagina('scarpe');
-                        break;
-                    case 'elettronica':
-                        $vd->setSottoPagina('elettronica');
-                        break;
-                    case 'integratori':
-                        $vd->setSottoPagina('integratori');
-                        break;
-                    case 'borse':
-                        $vd->setSottoPagina('borse');
-                        break;
-
-                    default:
-                        $vd->setSottoPagina('home');
-                        break;
-                }
-            }
             // gestione dei comandi inviati dall'utente
             if (isset($request["cmd"])) {
 

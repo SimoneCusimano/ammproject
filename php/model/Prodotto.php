@@ -9,6 +9,7 @@ class Prodotto {
     private $iva;
     private $prezzo_vendita;
     private $quantita;
+    private $categoria;
     
     private function __constructor() {}
     
@@ -40,6 +41,13 @@ class Prodotto {
         return $this->quantita;
     }
     
+    public function getCategoria() {
+        return $this->categoria;
+    }
+    
+    public function setId($id) {
+        $this->id = $id;
+    }
     
     public function setNome($nome) {
         $this->nome = $nome;
@@ -68,6 +76,11 @@ class Prodotto {
     
     public function setQuantita($quantita) {
         $this->quantita = $quantita;
+        return true;
+    }
+    
+    public function setCategoria($categoria) {
+        $this->categoria = $categoria;
         return true;
     }
     

@@ -5,6 +5,8 @@ include_once basename(__DIR__) . '/../model/User.php';
 include_once basename(__DIR__) . '/../model/UserFactory.php';
 include_once basename(__DIR__) . '/../model/Categoria.php';
 include_once basename(__DIR__) . '/../model/CategoriaFactory.php';
+include_once basename(__DIR__) . '/../model/Prodotto.php';
+include_once basename(__DIR__) . '/../model/ProdottoFactory.php';
 
 class BaseController {
 
@@ -88,8 +90,11 @@ class BaseController {
      */
     protected function showHomeDipendente($vd) {
         $categorie = CategoriaFactory::instance()->getListaCategorie();
-        $vd->setTitolo("Amm Project - Dipendente ");
+        $prodotti = ProdottoFactory::instance()->getProdotti();
+        
+        $vd->setTitolo("Amm Project - Dipendente");
         $vd->setMenuCategorie($categorie);
+        $vd->setProdotti($prodotti);
         $vd->setMenuFile(basename(__DIR__) . '/../view/dipendente/menu.php');
         $vd->setLogoFile(basename(__DIR__) . '/../view/dipendente/logo.php');
         $vd->setLeftBarFile(basename(__DIR__) . '/../view/dipendente/leftBar.php');
@@ -104,8 +109,11 @@ class BaseController {
     protected function showHomeAmministratore($vd) {
         //$this->logout($vd);
         $categorie = CategoriaFactory::instance()->getListaCategorie();
-        $vd->setTitolo("Amm Project - Amministratore ");
+        $prodotti = ProdottoFactory::instance()->getListaProdotti();
+            
+        $vd->setTitolo("Amm Project - Amministratore");
         $vd->setMenuCategorie($categorie);
+        $vd->setProdotti($prodotti);
         $vd->setMenuFile(basename(__DIR__) . '/../view/amministratore/menu.php');
         $vd->setLogoFile(basename(__DIR__) . '/../view/amministratore/logo.php');
         $vd->setLeftBarFile(basename(__DIR__) . '/../view/amministratore/leftBar.php');

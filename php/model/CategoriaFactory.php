@@ -2,7 +2,7 @@
 
 include_once 'Categoria.php';
 
-class CategoriaFactory{
+class CategoriaFactory {
     
     private static $singleton;
 
@@ -33,28 +33,28 @@ class CategoriaFactory{
         }
         else {
             $stmt = $mysqli->stmt_init();
-            $query = "select 
-                        categoria.id categoria_id,
-                        categoria.nome categoria_nome,
-                        categoria.descrizione categoria_descrizione
-                    from categoria";
+            $query = "  select 
+                            categoria.id categoria_id,
+                            categoria.nome categoria_nome,
+                            categoria.descrizione categoria_descrizione
+                        from categoria";
             $stmt->prepare($query);
-        if (!isset($mysqli)) {
-            error_log("[getListaCategorie] Impossibile inizializzare il database");
+            if (!isset($mysqli)) {
+                error_log("[getListaCategorie] Impossibile inizializzare il database");
+                $mysqli->close();
+                return $categorie;
+            }
+            $result = $mysqli->query($query);
+            if ($mysqli->errno > 0) {
+                error_log("[getListaCategorie] Impossibile eseguire la query");
+                $mysqli->close();
+                return $categorie;
+            }
+            while ($row = $result->fetch_array()) {
+                $categorie[] = self::creaCategorieDaArray($row);
+            }
             $mysqli->close();
             return $categorie;
-        }
-        $result = $mysqli->query($query);
-        if ($mysqli->errno > 0) {
-            error_log("[getListaCategorie] Impossibile eseguire la query");
-            $mysqli->close();
-            return $categorie;
-        }
-        while ($row = $result->fetch_array()) {
-            $categorie[] = self::creaCategorieDaArray($row);
-        }
-        $mysqli->close();
-        return $categorie;
         }
     }
     
@@ -66,8 +66,5 @@ class CategoriaFactory{
         
         return $categoria;
     }
-    
-    
-    
 }
 
