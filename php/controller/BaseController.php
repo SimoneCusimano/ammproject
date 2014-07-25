@@ -90,7 +90,7 @@ class BaseController {
      */
     protected function showHomeDipendente($vd) {
         $categorie = CategoriaFactory::instance()->getListaCategorie();
-        $prodotti = ProdottoFactory::instance()->getProdotti();
+        $prodotti = ProdottoFactory::instance()->getListaProdotti();
         
         $vd->setTitolo("Amm Project - Dipendente");
         $vd->setMenuCategorie($categorie);

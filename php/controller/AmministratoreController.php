@@ -31,6 +31,23 @@ class AmministratoreController extends BaseController {
                         $this->logout($vd);
                         break;
                     
+                    case 'cancella':
+                        if (isset($request['prodotto'])) {
+                            $intVal = filter_var($request['prodotto'], FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
+                            if (isset($intVal)) {
+                                $mod_prodotto = ProdottoFactory::instance()->cercaProdottoPerId($intVal);
+                                if ($mod_prodotto != null) {
+                                    if (ProdottoFactory::instance()->cancella($mod_prodotto) != 1) {
+                                        $msg[] = '<li> Impossibile cancellare il prodotto </li>';
+                                    }
+                                }
+                                $this->creaFeedbackUtente($msg, $vd, "Prodotto eliminato");
+                            }
+                        }
+                        //$prodotti = ProdottoFactory::instance()->getListaProdotti();
+                        $this->showHomeUtente($vd);
+                        break;
+                    
                     // default
                     default:
                         $this->showHomeUtente($vd);

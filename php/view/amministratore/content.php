@@ -10,6 +10,7 @@
             <th>Prezzo Vendita</th>
             <th>Quantita'</th>
             <th>Categoria</th>
+            <th>Elimina</th>
         </tr>
 
         
@@ -25,6 +26,11 @@
                 echo "<th>".$prodotto->getPrezzoVendita()."</th>";
                 echo "<th>".$prodotto->getQuantita()."</th>";
                 echo "<th>".$prodotto->getCategoria()."</th>";
+                echo "<th>
+                          <a href=\"amministratore?cmd=cancella&prodotto=".$prodotto->getId()."\" title=\"Elimina\">
+                            <img  src=\"../images/delete-action.png\" alt=\"Elimina Prodotto\">
+                          </a>
+                      </th>";
             echo "</tr>";
         }
     ?>

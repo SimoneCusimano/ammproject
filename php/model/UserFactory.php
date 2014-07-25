@@ -54,7 +54,6 @@ class UserFactory {
                 $mysqli->close();
                 return null;
             }
-
             $utente = self::caricaUtenteDaStmt($stmt);
             if (isset($utente)) {
                 // ho trovato uno studente
