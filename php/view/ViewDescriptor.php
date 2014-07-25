@@ -9,7 +9,6 @@ class ViewDescriptor {
     private $logo_file;
     private $menu_file;
     private $menu_categorie;
-    private $leftBar_file;
     private $content_file;
     private $messaggioErrore;
     private $messaggioConferma;

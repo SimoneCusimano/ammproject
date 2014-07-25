@@ -9,8 +9,8 @@ include_once basename(__DIR__) . '/../Settings.php';
         <title><?= $vd->getTitolo() ?></title>
         <base href="<?= Settings::getApplicationPath() ?>php/"/>
         <link href="../css/global.css" rel="stylesheet" type="text/css"/>
-        <link rel="shortcut icon" type="image/x-icon" href="../images/favicon.ico" />
-        <script type="text/javascript" src="../js/qualcosa.js"></script>
+        <link type="image/x-icon" href="../images/favicon.ico" />
+        <script type="text/javascript" src="../js/ajax.js"></script>
     </head>
 
     <body>
@@ -26,15 +26,6 @@ include_once basename(__DIR__) . '/../Settings.php';
                         require "$menu";
                     ?>
                 </div>
-            </div>
-            
-            <div id="sidebarLX">
-                <li id="categories">
-                    <?php
-                        $left = $vd->getLeftBarFile();
-                        require "$left";
-                    ?>
-                </li>
             </div>
             
             <div id="content">
@@ -73,7 +64,7 @@ include_once basename(__DIR__) . '/../Settings.php';
             </div>
             <div id="footer">
                 <p>
-                    Progetto per l'esame di Amministrazione di Sistema.
+                    Progetto per l'esame di Amministrazione di Sistema.<br/>Simone Cusimano
                 </p>
             </div>
         </div>

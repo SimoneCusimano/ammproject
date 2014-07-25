@@ -3,8 +3,7 @@
 include_once 'BaseController.php';
 
 class AmministratoreController extends BaseController {
-    
-    
+      
     public function __construct() {
         parent::__construct();
     }
@@ -30,7 +29,7 @@ class AmministratoreController extends BaseController {
                     case 'logout':
                         $this->logout($vd);
                         break;
-                    
+
                     case 'cancella':
                         if (isset($request['prodotto'])) {
                             $intVal = filter_var($request['prodotto'], FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
@@ -44,10 +43,9 @@ class AmministratoreController extends BaseController {
                                 $this->creaFeedbackUtente($msg, $vd, "Prodotto eliminato");
                             }
                         }
-                        //$prodotti = ProdottoFactory::instance()->getListaProdotti();
                         $this->showHomeUtente($vd);
                         break;
-                    
+                        
                     // default
                     default:
                         $this->showHomeUtente($vd);
@@ -62,10 +60,7 @@ class AmministratoreController extends BaseController {
                 $this->showHomeUtente($vd);
             }
         }
-
-
         // richiamo la vista
         require basename(__DIR__) . '/../view/master.php';
     }
-    
 }

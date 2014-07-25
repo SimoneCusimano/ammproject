@@ -79,7 +79,6 @@ class BaseController {
         $vd->setTitolo("AMM Project - Login");
         $vd->setMenuFile(basename(__DIR__) . '/../view/login/menu.php');
         $vd->setLogoFile(basename(__DIR__) . '/../view/login/logo.php');
-        $vd->setLeftBarFile(basename(__DIR__) . '/../view/login/leftBar.php');
         $vd->setContentFile(basename(__DIR__) . '/../view/login/content.php');
     }
 
@@ -97,7 +96,6 @@ class BaseController {
         $vd->setProdotti($prodotti);
         $vd->setMenuFile(basename(__DIR__) . '/../view/dipendente/menu.php');
         $vd->setLogoFile(basename(__DIR__) . '/../view/dipendente/logo.php');
-        $vd->setLeftBarFile(basename(__DIR__) . '/../view/dipendente/leftBar.php');
         $vd->setContentFile(basename(__DIR__) . '/../view/dipendente/content.php');
     }
 
@@ -107,7 +105,6 @@ class BaseController {
      * @param ViewDescriptor $vd il descrittore della vista
      */
     protected function showHomeAmministratore($vd) {
-        //$this->logout($vd);
         $categorie = CategoriaFactory::instance()->getListaCategorie();
         $prodotti = ProdottoFactory::instance()->getListaProdotti();
             
@@ -116,7 +113,6 @@ class BaseController {
         $vd->setProdotti($prodotti);
         $vd->setMenuFile(basename(__DIR__) . '/../view/amministratore/menu.php');
         $vd->setLogoFile(basename(__DIR__) . '/../view/amministratore/logo.php');
-        $vd->setLeftBarFile(basename(__DIR__) . '/../view/amministratore/leftBar.php');
         $vd->setContentFile(basename(__DIR__) . '/../view/amministratore/content.php');
     }
 
